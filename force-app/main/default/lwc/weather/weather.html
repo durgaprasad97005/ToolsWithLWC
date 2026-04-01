@@ -1,0 +1,13 @@
+<template>
+    <!-- Card keeps the forecast centered and Lightning-friendly -->
+    <article class="slds-card slds-p-around_medium slds-text-align_center weather-card">
+        <!-- Heading labels the snapshot for quick scanning -->
+        <h2 class="slds-text-heading_medium slds-m-bottom_small">Today's Weather</h2>
+        <!-- Icon gives immediate visual cue for the current condition -->
+        <lightning-icon icon-name={iconName} size="large" alternative-text="Weather icon"></lightning-icon>
+        <!-- Temperature highlighted with larger typography -->
+        <p class="slds-text-heading_large slds-m-top_medium">{displayTemperature}</p>
+        <!-- Supplemental description and location summary -->
+        <p class="slds-text-body_regular">{displaySummary}</p>
+    </article>
+</template>

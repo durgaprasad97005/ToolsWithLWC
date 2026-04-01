@@ -1,0 +1,78 @@
+<template>
+    <article class="slds-card slds-p-around_large clock-card" aria-live="polite">
+        <!-- Header keeps primary identity and short description grouped -->
+        <header class="slds-media slds-media_center slds-m-bottom_large">
+            <div class="slds-media__figure">
+                <span class="slds-icon_container" title="Clock">
+                    <svg class="slds-icon slds-icon_medium" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
+                    </svg>
+                </span>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium slds-truncate" title="Simple Clock">Simple Clock</h2>
+                <p class="slds-text-body_small">Live time display with flexible layout and future-ready controls</p>
+            </div>
+        </header>
+
+        <!-- Content area splits live display from controls for easy extension -->
+        <div class="slds-grid slds-wrap slds-grid_vertical-stretch clock-content">
+            <section class="slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_small clock-display" data-element="display">
+                <div class="clock-display__time">
+                    <lightning-formatted-time value={currentTime} hour={hourFormat} minute="2-digit" second="2-digit"></lightning-formatted-time>
+                </div>
+                <div class="clock-display__date">
+                    <lightning-formatted-date-time value={currentTime} year="numeric" month="long" day="2-digit" weekday="long"></lightning-formatted-date-time>
+                </div>
+                <div class="clock-display__meta slds-text-title_caps">
+                    <span>{selectedTimezoneLabel}</span>
+                    <span data-element="relative">{relativeDescription}</span>
+                </div>
+            </section>
+
+            <section class="slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_small clock-controls" data-element="controls">
+                <lightning-layout multiple-rows vertical-align="center">
+                    <lightning-layout-item flexibility="auto" padding="around-small">
+                        <lightning-combobox
+                            name="timezone"
+                            label="Time Zone"
+                            value={selectedTimezone}
+                            options={timezoneOptions}
+                            onchange={handleTimezoneChange}
+                        ></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto" padding="around-small">
+                        <lightning-input
+                            type="toggle"
+                            name="formatToggle"
+                            label="24-hour format"
+                            checked={isTwentyFourHour}
+                            onchange={handleFormatToggle}
+                        ></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto" padding="around-small">
+                        <lightning-button-group>
+                            <lightning-button
+                                variant="neutral"
+                                label="Refresh"
+                                title="Refresh now"
+                                onclick={handleRefresh}
+                            ></lightning-button>
+                            <lightning-button-icon
+                                icon-name="utility:settings"
+                                alternative-text="Clock preferences"
+                                title="Clock preferences"
+                                onclick={openPreferences}
+                            ></lightning-button-icon>
+                        </lightning-button-group>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </section>
+        </div>
+
+        <!-- Footer slot lets host pages inject supplemental details -->
+        <footer class="slds-card__footer clock-footer" data-element="footer">
+            <slot name="footer">Add quick links or status messages here.</slot>
+        </footer>
+    </article>
+</template>

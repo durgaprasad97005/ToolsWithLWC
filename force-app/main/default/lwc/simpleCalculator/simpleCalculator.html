@@ -1,0 +1,45 @@
+<template>
+    <!-- Calculator shell styled as an SLDS card -->
+    <div class="slds-card calculator-card">
+        <!-- Branded header with icon and context text -->
+        <header class="slds-media slds-media_center slds-p-around_medium">
+            <div class="slds-media__figure">
+                <span class="slds-icon_container" title="Calculator">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#formula"></use>
+                    </svg>
+                </span>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium">Simple Calculator</h2>
+                <p class="slds-text-body_small">Perform quick calculations with a polished Lightning design</p>
+            </div>
+        </header>
+
+        <div class="slds-card__body slds-card__body_inner slds-p-around_medium">
+            <!-- Output display mirrors current calculator state -->
+            <div class="display-panel">
+                <span class="display-value">{displayValue}</span>
+            </div>
+
+            <!-- Grid renders button metadata rows generated in JS -->
+            <div class="button-grid">
+                <template for:each={buttonRows} for:item="row">
+                    <div key={row.id} class="button-row">
+                        <template for:each={row.buttons} for:item="button">
+                            <button
+                                key={button.id}
+                                class={button.className}
+                                data-action={button.action}
+                                data-value={button.dataValue}
+                                onclick={handleButtonClick}
+                            >
+                                {button.label}
+                            </button>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

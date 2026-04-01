@@ -1,0 +1,97 @@
+/* Card wrapper keeps the clock visually aligned with modern Lightning look */
+.clock-card {
+    background: linear-gradient(155deg, #f4f6fb 0%, #ffffff 35%, #eef2ff 100%);
+    border-radius: 1rem;
+    box-shadow: 0 16px 40px rgba(9, 29, 58, 0.12);
+}
+
+/* Grid controls spacing between display and configuration panels */
+.clock-content {
+    gap: 1.5rem;
+}
+
+/* High-contrast backdrop ensures time is legible at a glance */
+.clock-display {
+    background: rgba(9, 29, 58, 0.85);
+    color: #f7fafc;
+    border-radius: 0.75rem;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: inset 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* Primary time readout uses bold, roomy typography */
+.clock-display__time {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Secondary date line complements the time without overpowering it */
+.clock-display__date {
+    margin-top: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* Meta details stack under the date for quick contextual cues */
+.clock-display__meta {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: #d4ddf0;
+}
+
+/* Base Lightning inputs stretch to match layout columns */
+.clock-controls lightning-combobox,
+.clock-controls lightning-input {
+    width: 100%;
+}
+
+/* Buttons inherit softer focus states to mesh with the card aesthetic */
+.clock-controls lightning-button,
+.clock-controls lightning-button-icon {
+    --slds-c-button-shadow-focus: 0 0 0 2px rgba(9, 29, 58, 0.15);
+}
+
+/* Footer keeps extra info distinct from the interactive area */
+.clock-footer {
+    border-top: 1px solid #d8dde6;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    text-align: right;
+    color: #5f6c87;
+}
+
+@media (max-width: 768px) {
+    .clock-card {
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+    }
+
+    .clock-display {
+        min-height: 160px;
+    }
+
+    .clock-display__time {
+        font-size: 2.25rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .clock-card {
+        background: linear-gradient(160deg, #1b2735 0%, #202b3c 50%, #141b24 100%);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .clock-footer {
+        border-top-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.65);
+    }
+}

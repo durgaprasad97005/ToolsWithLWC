@@ -10,3 +10,14 @@ package.xml
 
 # LWC Jest
 **/__tests__/**
+# Ignore Salesforce CLI working directories
+**/.sfdx
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Local cache/logs
+*.log
+*.tmp
+.cache/

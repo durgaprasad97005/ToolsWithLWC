@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Aligns component metadata with the target Salesforce release -->
+    <apiVersion>60.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Weather</masterLabel>
+    <description>Shows current weather data in a simple and responsive layout.</description>
+
+    <supportedFormFactors>
+        <supportedFormFactor>Large</supportedFormFactor>
+        <supportedFormFactor>Medium</supportedFormFactor>
+        <supportedFormFactor>Small</supportedFormFactor>
+    </supportedFormFactors>
+
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__ExperienceBuilder</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property name="city" label="City Name" type="String" description="City to display weather for."/>
+            <property name="showHumidity" label="Show Humidity" type="Boolean" description="Toggle humidity details." default="false"/>
+            <property name="refreshInterval" label="Refresh Interval (minutes)" type="Integer" description="Minutes between automatic refreshes." default="15"/>
+        </targetConfig>
+
+        <targetConfig targets="lightning__HomePage">
+            <property name="temperatureUnit" label="Temperature Unit" type="String" description="Preferred unit for display (F or C)." default="F"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

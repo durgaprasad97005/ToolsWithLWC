@@ -1,0 +1,32 @@
+/* Card wrapper mirrors modern Lightning aesthetic */
+.weather-card {
+    background: linear-gradient(160deg, #e7f3ff 0%, #ffffff 45%, #f2f8ff 100%);
+    border-radius: 1rem;
+    box-shadow: 0 12px 32px rgba(9, 29, 58, 0.12);
+}
+
+/* Icon inherits branded color for quick visual context */
+.weather-card lightning-icon {
+    --slds-c-icon-color-foreground-default: #1b5297;
+    --slds-c-icon-color-foreground: #1b5297;
+    margin-top: 0.5rem;
+}
+
+/* Temperature headline stands out with stronger contrast */
+.weather-card .slds-text-heading_large {
+    color: #0f2940;
+}
+
+/* Summary text uses softer tone to complement the heading */
+.weather-card .slds-text-body_regular {
+    color: #3e4a5e;
+    margin-top: 0.75rem;
+}
+
+/* Responsive tweak keeps spacing comfortable on phones */
+@media (max-width: 480px) {
+    .weather-card {
+        border-radius: 0.75rem;
+        padding: 1.25rem;
+    }
+}

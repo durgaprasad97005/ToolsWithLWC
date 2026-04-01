@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Aligns with org deployment version to unlock latest platform features -->
+    <apiVersion>60.0</apiVersion>
+    <!-- Makes the bundle selectable inside Lightning App Builder tools -->
+    <isExposed>true</isExposed>
+    <!-- Friendly name shown to admins when picking the component -->
+    <masterLabel>Simple Clock</masterLabel>
+    <!-- Brief summary displayed in setup to describe the component -->
+    <description>Modern Lightning clock with timezone controls and live formatting.</description>
+    <!-- Lists every Lightning surface where this component can be used -->
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+</LightningComponentBundle>
