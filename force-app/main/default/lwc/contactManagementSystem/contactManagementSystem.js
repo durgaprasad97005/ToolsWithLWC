@@ -5,6 +5,7 @@ import CreateContactModal from 'c/createContactModal';
 export default class ContactManagementSystem extends LightningElement {
     // Properties
     searchKey="";
+    filteredContactsCount;
     totalContactsCount;
     graphqlResult;
     @track contactList;
@@ -56,7 +57,10 @@ export default class ContactManagementSystem extends LightningElement {
 
             if(result.data) {
                 this.contactList = result.data.uiapi.query.Contact.edges.map(edge => edge.node);
-                this.totalContactsCount = result.data.uiapi.query.Contact.totalCount;
+                if(this.searchKey == "")
+                    this.totalContactsCount = result.data.uiapi.query.Contact.totalCount;
+                else 
+                    this.filteredContactsCount = result.data.uiapi.query.Contact.totalCount;
             }
             else 
                 this.errors = result.errors;
@@ -83,5 +87,10 @@ export default class ContactManagementSystem extends LightningElement {
         return {
             searchKey: `%${this.searchKey}%`
         };
+    }
+
+    // Getter for count of the Contact records
+    get showContactCount() {
+        return this.searchKey == "" ? this.totalContactsCount : (this.filteredContactsCount + " of " + this.totalContactsCount);
     }
 }
