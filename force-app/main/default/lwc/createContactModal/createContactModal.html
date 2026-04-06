@@ -1,0 +1,10 @@
+<template>
+    <lightning-modal-header label="Add New Contact"></lightning-modal-header>
+    <lightning-modal-body>
+        <lightning-record-form
+            object-api-name="Contact"
+            fields={fields}
+            onsuccess={handleSave}
+        ></lightning-record-form>
+    </lightning-modal-body>
+</template>

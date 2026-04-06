@@ -1,0 +1,34 @@
+<template>
+    <div class="slds-box slds-box_x-small">
+        <lightning-card icon-name="standard:contact">
+            <!-- Contact and Account Names -->
+            <div slot="title">
+                <h1><a href="#" onclick={handleContactClick}>{contactName}</a></h1>
+                <!-- <h1 onclick={handleContactClick}>{contactName}</h1> -->
+                <p style="font-size: smaller; font-weight: normal; margin-top: 2px;"><a href="#" onclick={handleAccountClick}>{accountName}</a></p>
+            </div>
+
+            <!-- Title -->
+            <div class="slds-grid slds-var-p-horizontal_medium slds-var-p-vertical_xx-small">
+                <lightning-icon icon-name="utility:user" size="x-small" alternative-text="Role" title="Title"></lightning-icon>
+                <p class="slds-var-m-left_x-small">{title}</p>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="slds-grid slds-var-p-horizontal_medium slds-var-p-vertical_xx-small">
+                <lightning-icon icon-name="utility:phone_portrait" size="x-small" alternative-text="Phone" title="Phone"></lightning-icon>
+                <p class="slds-var-m-left_x-small">
+                    <lightning-formatted-phone value={phone}></lightning-formatted-phone>
+                </p>
+            </div>
+
+            <!-- Email -->
+            <div class="slds-grid slds-var-p-horizontal_medium slds-var-p-vertical_xx-small">
+                <lightning-icon icon-name="utility:email" size="x-small" alternative-text="Email" title="Email"></lightning-icon>
+                <p class="slds-var-m-left_x-small">
+                    <lightning-formatted-email value={email} hide-icon></lightning-formatted-email>
+                </p>
+            </div>
+        </lightning-card>
+    </div>
+</template>
