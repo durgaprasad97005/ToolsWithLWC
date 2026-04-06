@@ -56,7 +56,18 @@ export default class ContactManagementSystem extends LightningElement {
             this.graphqlResult = result;
 
             if(result.data) {
-                this.contactList = result.data.uiapi.query.Contact.edges.map(edge => edge.node);
+                this.contactList = result.data.uiapi.query.Contact.edges.map(edge => {
+                    return {
+                        contactId: edge.node?.Id,
+                        contactName: edge.node?.Name?.value,
+                        accountId: edge.node?.Account?.Id,
+                        accountName: edge.node?.Account?.Name?.value,
+                        title: edge.node?.Title?.value,
+                        phone: edge.node?.Phone?.value,
+                        email: edge.node?.Email?.value
+                    }
+                });
+
                 if(this.searchKey == "")
                     this.totalContactsCount = result.data.uiapi.query.Contact.totalCount;
                 else 

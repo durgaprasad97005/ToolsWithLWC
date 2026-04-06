@@ -34,13 +34,13 @@
                     <template for:each={contactList} for:item="contact">
                         <div key={contact.Id} class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_4-of-12 slds-var-m-top_small">
                             <c-contact-card
-                                contact-id={contact?.Id}
-                                contact-name={contact?.Name?.value}
-                                account-id={contact?.Account?.Id}
-                                account-name={contact?.Account?.Name?.value}
-                                title={contact?.Title?.value}
-                                phone={contact?.Phone?.value}
-                                email={contact?.Email?.value}
+                                contact-id={contact.contactId}
+                                contact-name={contact.contactName}
+                                account-id={contact.accountId}
+                                account-name={contact.accountName}
+                                title={contact.title}
+                                phone={contact.phone}
+                                email={contact.email}
                             ></c-contact-card>
                         </div>
                     </template>
