@@ -1,5 +1,5 @@
 import { LightningElement, track, wire } from 'lwc';
-import { gql, graphql } from "lightning/graphql";
+import { gql, graphql } from "lightning/graphql"; 
 import CreateContactModal from 'c/createContactModal';
 
 export default class ContactManagementSystem extends LightningElement {
@@ -52,7 +52,7 @@ export default class ContactManagementSystem extends LightningElement {
         `, 
         variables: "$variables"
     })
-        getContactsInfo(result) {
+        getContactsInfo({result}) {
             this.graphqlResult = result;
 
             if(result.data) {

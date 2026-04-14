@@ -1,5 +1,5 @@
 import { api, LightningElement } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation'
+import { NavigationMixin } from 'lightning/navigation';
 
 export default class ContactCard extends NavigationMixin(LightningElement) {
     @api contactId;
