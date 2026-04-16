@@ -1,0 +1,22 @@
+<template>
+    <lightning-modal-header label="Create New Task"></lightning-modal-header>
+    <lightning-modal-body>
+
+        <!-- Subject -->
+        <lightning-input 
+            type="text" 
+            label="Subject" 
+            placeholder="Enter task subject here..." 
+            message-when-value-missing = "This field is required..."
+            onchange={handleInputChange} 
+            value={subject} 
+            required
+        ></lightning-input>
+        
+        <!-- Action buttons Save and Cancel -->
+        <div class="slds-grid slds-grid_align-center slds-var-m-top_x-small">
+            <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+            <lightning-button variant="brand" label="Save" class="slds-var-m-left_x-small" onclick={handleSave}></lightning-button>
+        </div>
+    </lightning-modal-body>
+</template>

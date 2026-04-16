@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-var-m-vertical_x-small slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+        <!-- Checkbox -->
+        <a href="#" class="slds-truncate " onclick={handleTaskNavigation}>{task.name}</a>
+
+        <!-- Button -->
+        <template lwc:if={task.completed}>
+            <lightning-button variant="brand" label="Mark as Completed" title="Primary action" disabled></lightning-button>
+        </template>
+        <template lwc:else>
+            <lightning-button variant="brand" label="Mark as Completed" title="Primary action" onclick={handleButtonClick}></lightning-button>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="taskList" icon-name="standard:task">
+        <!-- Add new task -->
+        <div class="slds-var-p-horizontal_medium slds-grid slds-grid_align-end">
+            <lightning-button variant="brand" label="New Task" onclick={addNewTask}></lightning-button>
+        </div>
+
+        <!-- Task List -->
+        <div class="slds-var-p-horizontal_medium">
+            <template for:each={tasks} for:item="task">
+                <c-task-item key={task.id} task={task} onitemclick={handleItemClick}></c-task-item>
+            </template>
+        </div>
+    </lightning-card>
+</template>
