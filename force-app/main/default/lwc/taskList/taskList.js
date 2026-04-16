@@ -9,9 +9,7 @@ export default class TaskList extends LightningElement {
     @track errors;
     refresh;
 
-    @wire(graphql, {
-        query: "$taskQuery"
-    })
+    @wire(graphql, { query: "$taskQuery" })
         handleTasks({ data, errors, refresh }) {
             if(data) {
                 this.tasks = data.uiapi.query.Task.edges.map(edge => {
@@ -32,7 +30,7 @@ export default class TaskList extends LightningElement {
     // Getter for graphql query
     get taskQuery() {
         return gql`
-            query {
+            query queryTaskRecords {
                 uiapi {
                     query {
                         Task(
