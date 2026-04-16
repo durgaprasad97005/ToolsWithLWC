@@ -1,7 +1,7 @@
 <template>
     <div class="slds-var-m-vertical_x-small slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
         <!-- Checkbox -->
-        <a href="#" class="slds-truncate " onclick={handleTaskNavigation}>{task.name}</a>
+        <a href="#" class="slds-truncate slds-text-heading_small" onclick={handleTaskNavigation}>{task.name}</a>
 
         <!-- Button -->
         <template lwc:if={task.completed}>
