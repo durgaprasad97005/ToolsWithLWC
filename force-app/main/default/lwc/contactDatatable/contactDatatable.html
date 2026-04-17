@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Contacts with Datatable" icon-name="standard:contact_list">
+        <div class="slds-var-p-horizontal_medium" style="height: 70vh;">
+            <!-- Filter Contacts -->
+            <lightning-input
+                type="search"
+                label="Filter contacts by name"
+                value={searchKey}
+                onchange={handleSearch}
+                class="slds-var-m-bottom_small slds-size_medium"
+            ></lightning-input>
+
+            <div style="height: 80%">
+                <!-- Contacts List -->
+                <lightning-datatable
+                    key-field="id"
+                    columns={columns}
+                    data={contacts}
+                    show-row-number-column
+                    hide-checkbox-column
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSorting}
+                ></lightning-datatable>
+            </div>
+        </div>
+    </lightning-card>
+</template>
