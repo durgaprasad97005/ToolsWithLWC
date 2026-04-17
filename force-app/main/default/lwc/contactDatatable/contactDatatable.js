@@ -5,13 +5,14 @@ import { graphql, gql } from 'lightning/graphql';
 const columns = [
     { label: 'Name', fieldName: 'name', sortable: true }, 
     { label: 'Email', fieldName: 'email', sortable: true }, 
-    { label: 'Phone', fieldName: 'phone' }
+    { label: 'Phone', fieldName: 'phone', sortable: true }
 ];
 
 export default class ContactDatatable extends LightningElement {
     // Properties
     columns = columns;
     @track contacts;
+    showTable;
     searchKey = "";
     defaultSortDirection = 'asc';
     sortDirection = 'asc';
@@ -29,6 +30,7 @@ export default class ContactDatatable extends LightningElement {
                         phone: edge.node.Phone.value ? edge.node.Phone.value : ""
                     };
                 });
+                this.showTable = this.contacts.length == 0 ? false : true;
             }
         }
 
@@ -38,7 +40,14 @@ export default class ContactDatatable extends LightningElement {
             query queryContactRecords( $searchKey: String ) {
                 uiapi {
                     query {
-                        Contact( where: { Name: { like: $searchKey } }, first: 200 ) {
+                        Contact(
+                            where: {
+                                or: [
+                                    { Name: { like: $searchKey } }
+                                ]
+                            }, 
+                            first: 200
+                        ) {
                             edges {
                                 node {
                                     Id
@@ -66,6 +75,12 @@ export default class ContactDatatable extends LightningElement {
         this.searchKey = event.target.value;
     }
 
+    // Event handler for Reset Filter button
+    resetFilter() {
+        this.searchKey = "";
+    }
+
+    // Helper function for the sort() method to provide the callback function
     sortBy(field, reverse, primer) {
         const key = primer 
                 ? function (x) {
@@ -89,7 +104,7 @@ export default class ContactDatatable extends LightningElement {
         const { fieldName: sortedBy, sortDirection } = event.detail;
 
         const cloneData = [...this.contacts];
-        cloneData.sort(this.sortBy(sortedBy, sortDirection == 'asc' ? 1 : -1, (value) => value.toLowerCase()));
+        cloneData.sort(this.sortBy(sortedBy, sortDirection == 'asc' ? 1 : -1, sortedBy != 'phone' && ((value) => value.toLowerCase())));
         this.contacts = cloneData;
 
         this.sortedBy = sortedBy;

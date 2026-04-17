@@ -1,28 +1,40 @@
 <template>
     <lightning-card title="Contacts with Datatable" icon-name="standard:contact_list">
         <div class="slds-var-p-horizontal_medium" style="height: 70vh;">
-            <!-- Filter Contacts -->
-            <lightning-input
-                type="search"
-                label="Filter contacts by name"
-                value={searchKey}
-                onchange={handleSearch}
-                class="slds-var-m-bottom_small slds-size_medium"
-            ></lightning-input>
+            <div class="slds-grid slds-grid_vertical-align-end">
+                <!-- Filter Contacts -->
+                <lightning-input
+                    type="search"
+                    label="Filter contacts by name"
+                    value={searchKey}
+                    onchange={handleSearch}
+                    class="slds-var-m-bottom_small slds-size_medium"
+                ></lightning-input>
+
+                <!-- Reset Filters Button -->
+                <lightning-button label="Reset Filter" onclick={resetFilter} class="slds-var-m-bottom_small slds-var-m-left_x-small"></lightning-button>
+            </div>
 
             <div style="height: 80%">
                 <!-- Contacts List -->
-                <lightning-datatable
-                    key-field="id"
-                    columns={columns}
-                    data={contacts}
-                    show-row-number-column
-                    hide-checkbox-column
-                    default-sort-direction={defaultSortDirection}
-                    sorted-direction={sortDirection}
-                    sorted-by={sortedBy}
-                    onsort={handleSorting}
-                ></lightning-datatable>
+                <template lwc:if={showTable}>
+                    <lightning-datatable
+                        key-field="id"
+                        columns={columns}
+                        data={contacts}
+                        show-row-number-column
+                        hide-checkbox-column
+                        default-sort-direction={defaultSortDirection}
+                        sorted-direction={sortDirection}
+                        sorted-by={sortedBy}
+                        onsort={handleSorting}
+                    ></lightning-datatable>
+                </template>
+                
+                <!-- No Matching Contacts -->
+                <template lwc:else>
+                    <p>No matching contacts found</p>
+                </template>
             </div>
         </div>
     </lightning-card>
